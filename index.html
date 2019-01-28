@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Monster Slayer</title>
+    <link rel="stylesheet" href="foundation.min.css">
+    <link rel="stylesheet" href="app.css">
+</head>
+
+<body>
+    <div id="app">
+        <section class="row">
+            <div class="small-6 columns">
+                <h1 class="text-center">YOU {{playerHealthBar}}</h1>
+                <div class="healthbar">
+                    <div class="healthbar text-center" :style="playerHealthBarWidth" style="background-color: green; margin: 0; color: white;">
+                    </div>
+                </div>
+            </div>
+            <div class="small-6 columns">
+                <h1 class="text-center">MONSTER {{monsterHealthBar}}</h1>
+                <div class="healthbar">
+                    <div class="healthbar text-center" :style="monsterHealthBarWidth" style="background-color: green; margin: 0; color: white;">
+
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="row controls" v-if="menuOptions">
+            <div class="small-12 columns">
+                <button id="start-game" @click="startGame">START NEW GAME</button>
+            </div>
+        </section>
+        <section class="row controls" v-else>
+            <div class="small-12 columns">
+                <button id="attack" @click="attack">ATTACK</button>
+                <button id="special-attack" @click="specialAttack">SPECIAL ATTACK</button>
+                <button id="heal" @click="healPlayer">HEAL</button>
+                <button id="give-up" @click="menuOptions =! menuOptions">GIVE UP</button>
+            </div>
+        </section>
+        <section class="row log" v-if="showCombatLog">
+            <div class="small-12 columns">
+                <ul id="playerTurn">
+                    <li v-for="element in combatLog" :class="element.turnID">{{ element.logText }}</li>
+                </ul>
+                </ul>
+            </div>
+        </section>
+    </div>
+</body>
+
+</html>
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<script src="index.js"></script>
