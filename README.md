@@ -1,2 +1,2 @@
 # js_browserGame
-vue browser game
+Vue browser game. A project from the Udemy Vue.js course
